@@ -6,31 +6,25 @@ class Post extends Component {
         this.text = props.text;
         this.hasPosted = props.hasPosted;
         this.time = null;
-        this.user = null;
+        this.user = props.user;
     }
 
 
 
     render() {
-        if (this.hasPosted) {
-            console.log('success');
-            return (
-                <div className='row'>
-                    <div className='col-md-1'>
-                        <p className='rounded bg-success text-light text-center p-1'>{this.user}</p>
-                    </div>
-                    <div className='col-md-9'>
-                        <p className='rounded bg-light p-3'>{this.text}</p>
-                    </div>
-                    <div className='col-md-2'>
-                        <p className='rounded text-light text-right p-1'>{this.time}</p>
-                    </div>
+        return (
+            <div className='row'>
+                <div className='col-md-1'>
+                    <p className='rounded bg-success text-light text-center p-1'>{this.user}</p>
                 </div>
-            );
-        } else {
-            console.log('no go');
-            return null;
-        }
+                <div className='col-md-9'>
+                    <p className='rounded bg-light p-3'>{this.text}</p>
+                </div>
+                <div className='col-md-2'>
+                    <p className='rounded text-light text-right p-1'>{this.time}</p>
+                </div>
+            </div>
+        );
 
     }
 }

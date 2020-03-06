@@ -5,19 +5,18 @@ class PostAction extends Component {
     constructor() {
         super();
         this.state = {
+            user: 'B',
             text: null,
-            hasPosted: false
         }
+        this.posts = [];
         this.handleClick = this.handleClick.bind(this);
         this.handleInput = this.handleInput.bind(this);
     }
 
     handleClick() {
-        this.setState({
-            hasPosted: true
-        })
-        console.log(this.state.text);
-        console.log(this.state.hasPosted);
+        this.posts.push(<Post user={this.state.user} text={this.state.text} />)
+        console.log(this.posts);
+        
     }
 
     handleInput(e) {
@@ -25,12 +24,11 @@ class PostAction extends Component {
             text: e.target.value
         })
     }
-    
-    render() {
 
+    render() {
         return (
             <React.Fragment>
-                <Post text={this.state.text} hasPosted={false}/>
+                <div>{this.posts}</div>
 
                 <hr></hr>
 
@@ -42,11 +40,11 @@ class PostAction extends Component {
                         <textarea className='form-control' placeholder='Penny for your thoughts?' onInput={this.handleInput} id='postInput'></textarea>
                     </div>
                     <div className='col-md-2 text-center'>
-                        <button className='btn btn-primary w-100' onClick={this.handleClick}>Post</button>
+                        <button className='btn btn-primary w-100'
+                            onClick={this.handleClick}>Post</button>
                     </div>
                 </div>
             </React.Fragment>
-
         );
     }
 }
