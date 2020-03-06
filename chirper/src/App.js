@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import InitialPost from './components/Initial-Post';
 
 const postsArr = [
-  { user: 'W', text: 'Blah.. It has rained TOO much this year :/', time: (new Date()).toLocaleTimeString(), id: 'initial1' },
-  { user: 'P', text: 'Sometimes I carry cash in my wallet just to make it seem full, even though I only pay with card. #confessions', time: (new Date()).toLocaleTimeString(), id: 'initial2' },
-  { user: 'S', text: 'Pizza is the best. The. Best.', time: (new Date()).toLocaleTimeString(), id: 'initial3' }];
+  { user: 'W', text: 'Blah.. It has rained TOO much this year :/', time: 'Earlier', id: 'initial1' },
+  { user: 'P', text: 'Sometimes I carry cash in my wallet just to make it seem full, even though I only pay with card. #confessions', time: 'Earlier', id: 'initial2' },
+  { user: 'S', text: 'Pizza is the best. The. Best.', time: 'Earlier', id: 'initial3' }];
 
 class App extends Component {
   constructor(props) {
@@ -41,17 +41,19 @@ class App extends Component {
     return (
       <div>
 
-        <div className='jumbotron text-center'>
-          <h1>Chirper</h1>
+        <div className='row justify-content-center bg-success rounded'>
+          <img className='rounded' src='http://clipart-library.com/images/8i6o8XGBT.jpg' alt='camper logo' width='100px' height='100px'></img>
         </div>
 
         <hr></hr>
 
-        <InitialPost posts={this.state.updatedPostsArr} />
+        <div id='postsDiv'>
+          <InitialPost posts={this.state.updatedPostsArr} />
+        </div>
 
         <hr></hr>
 
-        <div className='row'>
+        <div className='row' id='inputDiv'>
           <div className='col-md-1'>
             <p className='rounded bg-success text-light text-center p-1'>B</p>
           </div>
@@ -59,7 +61,9 @@ class App extends Component {
             <textarea className='form-control' placeholder='Penny for your thoughts?' id='postInput' onChange={this.handleInput}></textarea>
           </div>
           <div className='col-md-2 text-center form-group'>
-            <button className='btn btn-primary w-100' type='submit' onClick={this.handleClick}>Post</button>
+            <a href={'#' + this.state.id}>
+              <button className='btn btn-primary w-100' type='submit' onClick={this.handleClick}>Post</button>
+            </a>
           </div>
         </div>
 

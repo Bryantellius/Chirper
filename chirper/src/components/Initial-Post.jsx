@@ -4,7 +4,7 @@ function InitialPost(props) {
 
     const initialPostsList = 
         props.posts.map((post) =>
-            <div className='row' key={post.id}>
+            <div className='row' key={post.id} id={post.id}>
                 <div className='col-md-1'>
                     <p className='rounded bg-success text-light text-center p-1'>{post.user}</p>
                 </div>

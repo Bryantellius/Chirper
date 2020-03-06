@@ -1,0 +1,14 @@
+#postsDiv {
+    height: 50vh;
+    overflow: scroll;
+}
+#root {
+    height: 100vh;
+    position: relative;
+}
+#inputDiv {
+    position: fixed;
+    bottom: 0;
+    left: auto;
+    width: 100vw;
+}
