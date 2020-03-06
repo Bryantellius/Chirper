@@ -1,21 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class InitialPost extends Component {
-    render() {
-        return (
-            <div className='row'>
+function InitialPost(props) {
+
+    const initialPostsList = 
+        props.posts.map((post) =>
+            <div className='row' key={post.id}>
                 <div className='col-md-1'>
-                    <p className='rounded bg-success text-light text-center p-1'>{this.props.user}</p>
+                    <p className='rounded bg-success text-light text-center p-1'>{post.user}</p>
                 </div>
                 <div className='col-md-9'>
-                    <p className='rounded bg-light p-3'>{this.props.text}</p>
+                    <p className='rounded bg-light p-3'>{post.text}</p>
                 </div>
                 <div className='col-md-2'>
-                    <p className='rounded text-light text-right p-1'>{this.props.time}</p>
+                    <p className='rounded text-light text-right p-1'>{post.time}</p>
                 </div>
-            </div>
+            </div >
         );
-    }
+
+    return (
+        <div>{initialPostsList}</div>
+    );
+
 }
 
 export default InitialPost; 
