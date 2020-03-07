@@ -35,7 +35,7 @@ class App extends Component {
 
   handleUsername(event) {
     this.setState({
-      user: event.target.value
+      user: event.target.value[0]
     })
   }
 
@@ -43,7 +43,7 @@ class App extends Component {
     if (document.getElementById('postInput').value === '') {
 
     } else {
-      postsArr.push({ user: 'B', text: this.state.text, time: this.state.time, id: this.state.id })
+      postsArr.push({ user: this.state.user, text: this.state.text, time: this.state.time, id: this.state.id })
       this.setState({
         updatedPostsArr: postsArr
       })
@@ -74,14 +74,14 @@ class App extends Component {
           <div className='column text-center'>
             <div className='input-group'>
               <input
-                className='form-control'
+                className='form-control mx-3'
                 placeholder='Username'
                 onChange={this.handleUsername}
               >
               </input>
             </div>
             <div className=''>
-              <button className='btn btn-primary my-1' onClick={this.handleSignIn}>Advance</button>
+              <button className='btn btn-primary my-3' onClick={this.handleSignIn}>Advance</button>
             </div>
           </div>
         </div>
@@ -94,6 +94,8 @@ class App extends Component {
             <img className='rounded' src='http://clipart-library.com/images/8i6o8XGBT.jpg' alt='camper logo' width='100px' height='100px'></img>
           </div>
 
+          <div id='navBar'><a href='' className='text-white' id='logoutLink'>Logout</a></div>
+
           <hr></hr>
 
           <div id='postsDiv'>
@@ -104,7 +106,7 @@ class App extends Component {
 
           <div className='row' id='inputDiv'>
             <div className='col-md-1'>
-              <p className='rounded bg-success text-light text-center p-1'>B</p>
+              <p className='rounded bg-success text-light text-center p-1'>{this.state.user}</p>
             </div>
             <div className='col-md-9 form-group'>
               <textarea className='form-control' placeholder='Penny for your thoughts?' id='postInput' onChange={this.handleInput}></textarea>

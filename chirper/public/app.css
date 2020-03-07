@@ -9,3 +9,12 @@
     height: 100vh;
     position: relative;
 }
+#navBar{
+    position: relative;
+    height: 2rem;
+}
+#logoutLink {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
