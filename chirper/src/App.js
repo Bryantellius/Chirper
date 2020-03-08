@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InitialPost from './components/Initial-Post';
+import SignIn from './components/SignIn';
 
 let number = 4;
 const postsArr = [
@@ -20,11 +21,11 @@ class App extends Component {
       updatedPostsArr: postsArr
     }
 
-
     this.handleUsername = this.handleUsername.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   handleSignIn() {
@@ -61,31 +62,17 @@ class App extends Component {
     })
   }
 
+  logout() {
+    this.setState({
+      hasSignedIn: false
+    })
+  }
+
   render() {
     if (!(this.state.hasSignedIn)) {
-      return (
-        <div>
-          <div className='row justify-content-center bg-success rounded'>
-            <img className='rounded' src='http://clipart-library.com/images/8i6o8XGBT.jpg' alt='camper logo' width='100px' height='100px'></img>
-          </div>
-
-          <hr></hr>
-
-          <div className='column text-center'>
-            <div className='input-group'>
-              <input
-                className='form-control mx-3'
-                placeholder='Username'
-                onChange={this.handleUsername}
-              >
-              </input>
-            </div>
-            <div className=''>
-              <button className='btn btn-primary my-3' onClick={this.handleSignIn}>Advance</button>
-            </div>
-          </div>
-        </div>
-      );
+      return <SignIn
+        handleUsername={this.handleUsername}
+        handleSignIn={this.handleSignIn} />
     } else {
       return (
         <div>
@@ -94,7 +81,7 @@ class App extends Component {
             <img className='rounded' src='http://clipart-library.com/images/8i6o8XGBT.jpg' alt='camper logo' width='100px' height='100px'></img>
           </div>
 
-          <div id='navBar'><a href='' className='text-white' id='logoutLink'>Logout</a></div>
+          <div id='navBar'><p onClick={this.logout} className='text-white' id='logoutLink'>Logout</p></div>
 
           <hr></hr>
 
