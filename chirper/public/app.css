@@ -19,3 +19,7 @@
     top: 1rem;
     cursor: pointer;
 }
+.likeFire {
+    opacity: 0.10;
+    cursor: pointer;
+}

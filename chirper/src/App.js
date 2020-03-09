@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import InitialPost from './components/Initial-Post';
+import Posts from './components/Posts';
 import SignIn from './components/SignIn';
+import Header from './components/Header';
+import PostInput from './components/PostInput';
 
 let number = 4;
 const postsArr = [
-  { user: 'W', text: 'Blah.. It has rained TOO much this year :/', time: 'Earlier', id: 'initial1' },
+  { user: 'W', text: 'Blah.. It has already rained TOO much this year :/', time: 'Earlier', id: 'initial1' },
   { user: 'P', text: 'Sometimes I carry cash in my wallet just to make it seem full, even though I only pay with card. #confessions', time: 'Earlier', id: 'initial2' },
   { user: 'S', text: 'Pizza is the best. The. Best.', time: 'Earlier', id: 'initial3' }];
 
@@ -17,7 +19,7 @@ class App extends Component {
       user: '',
       text: '',
       time: '',
-      id: '',
+      id: 'initial3',
       updatedPostsArr: postsArr
     }
 
@@ -29,9 +31,15 @@ class App extends Component {
   }
 
   handleSignIn() {
-    this.setState({
-      hasSignedIn: true
-    })
+    if (this.state.user === '') {
+
+    } else {
+      this.setState({
+        hasSignedIn: true
+      })
+      setTimeout(() => document.getElementById(this.state.id).scrollIntoView(), 100);
+    }
+
   }
 
   handleUsername(event) {
@@ -50,8 +58,8 @@ class App extends Component {
       })
       document.getElementById('postInput').value = '';
       setTimeout(() => document.getElementById(this.state.id).scrollIntoView(), 100);
-      number++;
     }
+    number++;
   }
 
   handleInput(event) {
@@ -77,40 +85,27 @@ class App extends Component {
       return (
         <div>
 
-          <div className='row justify-content-center bg-success rounded'>
-            <img className='rounded' src='http://clipart-library.com/images/8i6o8XGBT.jpg' alt='camper logo' width='100px' height='100px'></img>
-          </div>
+          <Header />
 
           <div id='navBar'><p onClick={this.logout} className='text-white' id='logoutLink'>Logout</p></div>
 
           <hr></hr>
 
           <div id='postsDiv'>
-            <InitialPost posts={this.state.updatedPostsArr} />
+            <Posts posts={this.state.updatedPostsArr} />
           </div>
 
           <hr></hr>
 
-          <div className='row' id='inputDiv'>
-            <div className='col-md-1'>
-              <p className='rounded bg-success text-light text-center p-1'>{this.state.user}</p>
-            </div>
-            <div className='col-md-9 form-group'>
-              <textarea className='form-control' placeholder='Penny for your thoughts?' id='postInput' onChange={this.handleInput}></textarea>
-            </div>
-            <div className='col-md-2 text-center form-group'>
-              <a href={'#' + this.state.id}>
-                <button className='btn btn-primary w-100' type='submit' onClick={this.handleClick}>Post</button>
-              </a>
-            </div>
-          </div>
-
+          <PostInput
+            user={this.state.user}
+            handleClick={this.handleClick}
+            handleInput={this.handleInput}
+            id={this.state.id} />
         </div>
       );
     }
-
   }
-
 }
 
 export default App;

@@ -1,15 +1,17 @@
 import React from 'react';
+import LikeFire from './LikeFire';
 
-function InitialPost(props) {
+function Posts(props) {
 
     const initialPostsList = 
         props.posts.map((post) =>
-            <div className='row' key={post.id} id={post.id}>
+            <div className='row my-3' key={post.id} id={post.id}>
                 <div className='col-md-1'>
-                    <p className='rounded bg-success text-light text-center p-1'>{post.user}</p>
+                    <p className='shadow rounded bg-success text-light text-center p-1'>{post.user}</p>
                 </div>
                 <div className='col-md-9'>
-                    <p className='rounded bg-light p-3'>{post.text}</p>
+                    <p className='shadow rounded bg-light p-3 m-0'>{post.text}</p>
+                    <LikeFire id={post.id}/>
                 </div>
                 <div className='col-md-2'>
                     <p className='rounded text-light text-right p-1'>{post.time}</p>
@@ -23,4 +25,4 @@ function InitialPost(props) {
 
 }
 
-export default InitialPost; 
+export default Posts; 

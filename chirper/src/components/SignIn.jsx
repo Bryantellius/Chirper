@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 class SignIn extends Component {
     constructor(props) {
@@ -11,21 +12,25 @@ class SignIn extends Component {
     render() {
         return (
             <div>
-                <div className='row justify-content-center bg-success rounded'>
-                    <img className='rounded' src='http://clipart-library.com/images/8i6o8XGBT.jpg' alt='camper logo' width='100px' height='100px'></img>
-                </div>
+                <Header />
 
                 <hr></hr>
-                <div className='row justify-content-center'>
+
+                <div className='text-center my-3'>
+                    <h1>Welcome to Chirper!</h1>
+                    <h4>Join the Conversation</h4>
+                </div>
+                <div className='row justify-content-center' >
                     <div className='form-group text-center w-50' id='signInDiv'>
                         <input
-                            className='form-control mx-3'
+                            className='form-control mx-3 shadow'
+                            type='text'
                             placeholder='Username'
                             onChange={this.handleUsername}
                         >
                         </input>
                         <div className='form-group'>
-                            <button className='btn btn-primary my-3' onClick={this.handleSignIn}>Sign In</button>
+                            <button className='shadow btn btn-primary my-3' onClick={this.handleSignIn}>Log In</button>
                         </div>
                     </div>
                 </div>
