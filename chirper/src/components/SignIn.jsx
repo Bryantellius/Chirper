@@ -26,6 +26,7 @@ class SignIn extends Component {
                             className='form-control mx-3 shadow'
                             type='text'
                             placeholder='Username'
+
                             onChange={this.handleUsername}
                         >
                         </input>

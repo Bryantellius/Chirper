@@ -23,14 +23,9 @@ class App extends Component {
       updatedPostsArr: postsArr
     }
 
-    this.handleUsername = this.handleUsername.bind(this);
-    this.handleSignIn = this.handleSignIn.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
-  handleSignIn() {
+  handleSignIn = () => {
     if (this.state.user === '') {
 
     } else {
@@ -42,13 +37,13 @@ class App extends Component {
 
   }
 
-  handleUsername(event) {
+  handleUsername = (event) => {
     this.setState({
       user: event.target.value[0]
     })
   }
 
-  handleClick() {
+  handleClick = () => {
     if (document.getElementById('postInput').value === '') {
 
     } else {
@@ -62,7 +57,7 @@ class App extends Component {
     number++;
   }
 
-  handleInput(event) {
+  handleInput = (event) => {
     this.setState({
       text: event.target.value,
       time: (new Date()).toLocaleTimeString(),
@@ -70,7 +65,7 @@ class App extends Component {
     })
   }
 
-  logout() {
+  logout = () => {
     this.setState({
       hasSignedIn: false
     })
