@@ -67,7 +67,8 @@ class App extends Component {
 
   logout = () => {
     this.setState({
-      hasSignedIn: false
+      hasSignedIn: false,
+      user: ''
     })
   }
 
